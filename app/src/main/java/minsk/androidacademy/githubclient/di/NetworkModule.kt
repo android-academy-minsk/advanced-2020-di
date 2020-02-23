@@ -32,7 +32,7 @@ internal class NetworkModule {
 
     @Provides
     @AppScope
-    fun provideRestAdapter(
+    fun provideRetrofit(
         application: Application,
         okHttpClient: OkHttpClient
     ): Retrofit {

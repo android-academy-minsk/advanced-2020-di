@@ -30,9 +30,7 @@ interface FeatureSplashComponent {
     }
 }
 
-@Component(
-    dependencies = [AppComponentApi::class]
-)
+@Component(dependencies = [AppComponentApi::class])
 internal interface FeatureSplashDependencies {
 
     fun retrofit(): Retrofit

@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_splash.pbLoading
 import minsk.androidacademy.githubclient.GithubClientApplication
 import minsk.androidacademy.githubclient.R
 import minsk.androidacademy.githubclient.extensions.subscribe
-import minsk.androidacademy.githubclient.feature.repos.di.model.FeatureUserRepositoriesComponent
+import minsk.androidacademy.githubclient.feature.repos.di.FeatureUserRepositoriesComponent
 import minsk.androidacademy.githubclient.feature.repos.di.model.UserLoginIdentifier
 import minsk.androidacademy.githubclient.feature.repos.presentation.RepositoriesListViewModel
 import minsk.androidacademy.githubclient.feature.repos.presentation.model.RepositoryDO
@@ -54,7 +54,11 @@ class RepositoriesListActivity : AppCompatActivity() {
 
         FeatureUserRepositoriesComponent.Factory.get(GithubClientApplication[this].appComponent)
             .userRepositoriesComponent()
-            .create(this, UserLoginIdentifier(userLogin))
+            .create(this,
+                UserLoginIdentifier(
+                    userLogin
+                )
+            )
             .inject(this)
 
         setupRepositoriesListView()

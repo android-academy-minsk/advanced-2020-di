@@ -1,4 +1,4 @@
-package minsk.androidacademy.githubclient.feature.repos.di.model
+package minsk.androidacademy.githubclient.feature.repos.di
 
 import dagger.Component
 import minsk.androidacademy.githubclient.di.AppComponentApi
@@ -25,7 +25,11 @@ interface FeatureUserRepositoriesComponent {
 
         private fun createComponent(appComponentApi: AppComponentApi): FeatureUserRepositoriesComponent {
             return DaggerFeatureUserRepositoriesComponent.builder()
-                .featureUserRepositoriesDependencies(dependencies(appComponentApi))
+                .featureUserRepositoriesDependencies(
+                    dependencies(
+                        appComponentApi
+                    )
+                )
                 .build()
         }
 

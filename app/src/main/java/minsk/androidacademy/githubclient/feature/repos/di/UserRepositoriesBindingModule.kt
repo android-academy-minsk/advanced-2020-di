@@ -1,4 +1,4 @@
-package minsk.androidacademy.githubclient.feature.repos.di.model
+package minsk.androidacademy.githubclient.feature.repos.di
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -56,17 +56,17 @@ internal interface UserRepositoriesBindingModule {
 
     @Binds
     @IntoMap
-    @RepoTypeEnumKey(Type.TYPE_NORMAL)
+    @ViewHolderKey(Type.TYPE_NORMAL)
     fun bindViewHolderNormal(impl: RepositoryViewHolderNormalFactory): RepositoriesListViewHolderFactory
 
     @Binds
     @IntoMap
-    @RepoTypeEnumKey(Type.TYPE_BIG)
+    @ViewHolderKey(Type.TYPE_BIG)
     fun bindViewHolderBig(impl: RepositoryViewHolderBigFactory): RepositoriesListViewHolderFactory
 
     @Binds
     @IntoMap
-    @RepoTypeEnumKey(Type.TYPE_FEATURED)
+    @ViewHolderKey(Type.TYPE_FEATURED)
     fun bindViewHolderFeatured(impl: RepositoryViewHolderFeaturedFactory): RepositoriesListViewHolderFactory
 }
 
@@ -79,41 +79,12 @@ internal class UserRepositoriesModule {
         return retrofit.create(GithubUserRepositoriesEndpoint::class.java)
     }
 
-    //    @Provides
-    //    @PerScreen
-    //    fun provideRepositoriesListAdapter(
-    //        viewHolderFactories: Map<Int, RepositoriesListViewHolderFactory>
-    //    ): RepositoriesListAdapter {
-    //        return RepositoriesListAdapter(viewHolderFactories)
-    //    }
-
     @Provides
     @PerScreen
     fun provideLinearLayoutManager(context: Context): LinearLayoutManager {
         return LinearLayoutManager(context)
     }
-
-    //    @Provides
-    //    @IntoMap
-    //    @RepoTypeEnumKey(TYPE.TYPE_NORMAL)
-    //    fun provideViewHolderNormal(): RepositoriesListViewHolderFactory? {
-    //        return RepositoryViewHolderNormalFactory()
-    //    }
-    //
-    //    @Provides
-    //    @IntoMap
-    //    @RepoTypeEnumKey(TYPE.TYPE_BIG)
-    //    fun provideViewHolderBig(): RepositoriesListViewHolderFactory? {
-    //        return RepositoryViewHolderBigFactory()
-    //    }
-    //
-    //    @Provides
-    //    @IntoMap
-    //    @RepoTypeEnumKey(TYPE.TYPE_FEATURED)
-    //    fun provideViewHolderFeatured(): RepositoriesListViewHolderFactory {
-    //        return RepositoryViewHolderFeaturedFactory()
-    //    }
 }
 
 @MapKey
-internal annotation class RepoTypeEnumKey(val value: Type)
+internal annotation class ViewHolderKey(val value: Type)

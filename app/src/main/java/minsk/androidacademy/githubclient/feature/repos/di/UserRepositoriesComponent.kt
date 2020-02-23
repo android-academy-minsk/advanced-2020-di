@@ -1,9 +1,10 @@
-package minsk.androidacademy.githubclient.feature.repos.di.model
+package minsk.androidacademy.githubclient.feature.repos.di
 
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Subcomponent
 import minsk.androidacademy.githubclient.di.scope.PerScreen
+import minsk.androidacademy.githubclient.feature.repos.di.model.UserLoginIdentifier
 import minsk.androidacademy.githubclient.feature.repos.ui.RepositoriesListActivity
 
 @Subcomponent(
