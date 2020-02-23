@@ -6,13 +6,12 @@ import minsk.androidacademy.githubclient.feature.repos.presentation.model.Type
 import minsk.androidacademy.githubclient.feature.repos.presentation.model.Type.TYPE_BIG
 import minsk.androidacademy.githubclient.feature.repos.presentation.model.Type.TYPE_FEATURED
 import minsk.androidacademy.githubclient.feature.repos.presentation.model.Type.TYPE_NORMAL
-import javax.inject.Inject
 
 internal interface RepositoryMapper {
 
     fun map(repository: Repository): RepositoryDO
 
-    class Impl @Inject constructor() : RepositoryMapper {
+    class Impl constructor() : RepositoryMapper {
 
         override fun map(repository: Repository): RepositoryDO {
             val type = getPresentationType(repository)

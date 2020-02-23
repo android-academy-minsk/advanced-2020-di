@@ -1,13 +1,12 @@
 package minsk.androidacademy.githubclient.feature.repos.ui.adapter.viewholder
 
 import android.view.ViewGroup
-import javax.inject.Inject
 
 interface RepositoriesListViewHolderFactory {
 
     fun createViewHolder(parent: ViewGroup): RepositoryViewHolder
 
-    class Impl @Inject constructor() : RepositoriesListViewHolderFactory {
+    class Impl constructor() : RepositoriesListViewHolderFactory {
 
         override fun createViewHolder(parent: ViewGroup): RepositoryViewHolder {
             return RepositoryViewHolderFeatured(parent)
@@ -15,7 +14,7 @@ interface RepositoriesListViewHolderFactory {
     }
 }
 
-class RepositoryViewHolderFeaturedFactory @Inject constructor() :
+class RepositoryViewHolderFeaturedFactory constructor() :
     RepositoriesListViewHolderFactory {
 
     override fun createViewHolder(parent: ViewGroup): RepositoryViewHolder {
@@ -23,14 +22,14 @@ class RepositoryViewHolderFeaturedFactory @Inject constructor() :
     }
 }
 
-class RepositoryViewHolderBigFactory @Inject constructor() : RepositoriesListViewHolderFactory {
+class RepositoryViewHolderBigFactory constructor() : RepositoriesListViewHolderFactory {
 
     override fun createViewHolder(parent: ViewGroup): RepositoryViewHolder {
         return RepositoryViewHolderBig(parent)
     }
 }
 
-class RepositoryViewHolderNormalFactory @Inject constructor() : RepositoriesListViewHolderFactory {
+class RepositoryViewHolderNormalFactory constructor() : RepositoriesListViewHolderFactory {
 
     override fun createViewHolder(parent: ViewGroup): RepositoryViewHolder {
         return RepositoryViewHolderNormal(parent)

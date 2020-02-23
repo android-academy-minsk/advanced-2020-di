@@ -12,9 +12,8 @@ import minsk.androidacademy.githubclient.feature.splash.domain.model.Success
 import minsk.androidacademy.githubclient.feature.splash.domain.model.UserResult
 import minsk.androidacademy.githubclient.navigation.Destination.RepositoryList
 import minsk.androidacademy.githubclient.navigation.Router
-import javax.inject.Inject
 
-internal class SplashViewModelImpl @Inject constructor(
+internal class SplashViewModelImpl constructor(
     private val router: Router,
     private val getUserLoginUseCase: GetUserLoginUseCase
 ) : SplashViewModel() {

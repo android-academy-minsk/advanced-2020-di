@@ -38,10 +38,6 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
 
-    //Dagger
-    implementation "com.google.dagger:dagger-android:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesAndroidVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesAndroidVersion"
 
@@ -58,6 +54,4 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.7.1"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
     implementation "com.google.code.gson:gson:$gsonVersion"
-
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 }

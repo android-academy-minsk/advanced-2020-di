@@ -1,8 +1,6 @@
 package minsk.androidacademy.githubclient.navigation
 
-import javax.inject.Inject
-
-class RouterImpl @Inject constructor() : Router {
+class RouterImpl constructor() : Router {
 
     private var navigator: Navigator? = null
 

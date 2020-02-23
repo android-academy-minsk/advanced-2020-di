@@ -9,9 +9,8 @@ import minsk.androidacademy.githubclient.feature.splash.domain.model.Success
 import minsk.androidacademy.githubclient.feature.splash.domain.model.UserResult
 import retrofit2.HttpException
 import java.io.IOException
-import javax.inject.Inject
 
-internal class UserRepositoryImpl @Inject constructor(
+internal class UserRepositoryImpl constructor(
     private val remoteApi: GithubUserEndpoint,
     private val userMapper: UserMapper
 ) : UserRepository {

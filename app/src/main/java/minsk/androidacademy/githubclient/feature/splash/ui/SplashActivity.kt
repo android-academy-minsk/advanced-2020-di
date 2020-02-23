@@ -7,35 +7,40 @@ import androidx.core.widget.addTextChangedListener
 import kotlinx.android.synthetic.main.activity_splash.btnShowRepositories
 import kotlinx.android.synthetic.main.activity_splash.etUsername
 import kotlinx.android.synthetic.main.activity_splash.pbLoading
-import minsk.androidacademy.githubclient.GithubClientApplication
 import minsk.androidacademy.githubclient.R
 import minsk.androidacademy.githubclient.extensions.subscribe
-import minsk.androidacademy.githubclient.feature.splash.di.FeatureSplashComponent.Factory
+import minsk.androidacademy.githubclient.feature.splash.di.splashActivityModule
+import minsk.androidacademy.githubclient.feature.splash.di.splashBindingKodeinModule
 import minsk.androidacademy.githubclient.feature.splash.presentation.SplashViewModel
-import minsk.androidacademy.githubclient.mvp.ViewModelFactory
 import minsk.androidacademy.githubclient.mvp.getViewModel
 import minsk.androidacademy.githubclient.navigation.Router
-import javax.inject.Inject
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.direct
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.provider
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity(), KodeinAware {
 
-    @Inject
-    internal lateinit var factory: ViewModelFactory
+    override lateinit var kodein: Kodein
 
-    @Inject
-    internal lateinit var router: Router
+    private fun initKodein() {
+        kodein = Kodein {
+            extend((application as KodeinAware).kodein)
+            import(splashActivityModule)
+            import(splashBindingKodeinModule)
+            bind<AppCompatActivity>() with provider { this@SplashActivity }
+        }
+    }
 
-    private lateinit var viewModel: SplashViewModel
+    private val viewModel: SplashViewModel by getViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initKodein()
         setContentView(R.layout.activity_splash)
-
-        Factory.get(GithubClientApplication[this].appComponent)
-            .inject(this)
-
-        viewModel = getViewModel(factory)
 
         etUsername.addTextChangedListener(onTextChanged = { _, _, _, _ -> etUsername.error = null })
         btnShowRepositories.setOnClickListener {
@@ -52,12 +57,14 @@ class SplashActivity : AppCompatActivity() {
     override fun onResumeFragments() {
         super.onResumeFragments()
 
-        router.setNavigator(SplashNavigator(this))
+        val router: Router by instance()
+        router.setNavigator(direct.instance())
     }
 
     override fun onPause() {
         super.onPause()
 
+        val router: Router by instance()
         router.setNavigator(null)
     }
 

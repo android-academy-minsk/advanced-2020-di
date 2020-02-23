@@ -10,9 +10,8 @@ import minsk.androidacademy.githubclient.feature.repos.presentation.model.Networ
 import minsk.androidacademy.githubclient.feature.repos.presentation.model.RepositoryDO
 import minsk.androidacademy.githubclient.feature.repos.presentation.model.Success
 import minsk.androidacademy.githubclient.feature.repos.presentation.model.UserRepositoriesResult
-import javax.inject.Inject
 
-internal class RepositoriesListViewModelImpl @Inject constructor(
+internal class RepositoriesListViewModelImpl constructor(
     private val userLoginIdentifier: UserLoginIdentifier,
     private val getUserRepositoriesUseCase: GetUserRepositoriesUseCase,
     private val mapper: RepositoryMapper

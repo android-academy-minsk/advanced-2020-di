@@ -8,9 +8,8 @@ import minsk.androidacademy.githubclient.feature.repos.presentation.model.Succes
 import minsk.androidacademy.githubclient.feature.repos.presentation.model.UserRepositoriesResult
 import minsk.androidacademy.githubclient.feature.splash.UserLogin
 import java.io.IOException
-import javax.inject.Inject
 
-internal class UserRepositoriesRepositoryImpl @Inject constructor(
+internal class UserRepositoriesRepositoryImpl constructor(
     private val remoteApi: GithubUserRepositoriesEndpoint,
     private val userRepositoryMapper: UserRepositoryMapper
 ) : UserRepositoriesRepository {

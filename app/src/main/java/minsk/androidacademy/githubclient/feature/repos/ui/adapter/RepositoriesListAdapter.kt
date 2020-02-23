@@ -6,10 +6,11 @@ import minsk.androidacademy.githubclient.feature.repos.presentation.model.Reposi
 import minsk.androidacademy.githubclient.feature.repos.presentation.model.Type
 import minsk.androidacademy.githubclient.feature.repos.ui.adapter.viewholder.RepositoriesListViewHolderFactory
 import minsk.androidacademy.githubclient.feature.repos.ui.adapter.viewholder.RepositoryViewHolder
-import javax.inject.Inject
+import org.kodein.di.DKodein
+import org.kodein.di.generic.instance
 
-class RepositoriesListAdapter @Inject constructor(
-    private val viewHolderFactories: Map<Type, @JvmSuppressWildcards RepositoriesListViewHolderFactory>
+class RepositoriesListAdapter constructor(
+    private val kodein: DKodein
 ) : RecyclerView.Adapter<RepositoryViewHolder>() {
 
     private val repositories = mutableListOf<RepositoryDO>()
@@ -17,7 +18,8 @@ class RepositoriesListAdapter @Inject constructor(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
         val type = Type.values().find { type -> type.type == viewType }!!
 
-        return viewHolderFactories.getValue(type).createViewHolder(parent)
+        return kodein.instance<Type, RepositoriesListViewHolderFactory>(arg = type)
+            .createViewHolder(parent)
     }
 
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {

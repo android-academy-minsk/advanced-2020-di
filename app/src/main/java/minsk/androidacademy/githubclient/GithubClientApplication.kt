@@ -2,27 +2,16 @@ package minsk.androidacademy.githubclient
 
 import android.app.Application
 import android.content.Context
-import minsk.androidacademy.githubclient.di.AppComponent
-import minsk.androidacademy.githubclient.di.DaggerAppComponent
-import timber.log.Timber
-import timber.log.Timber.DebugTree
+import appKodeinModule
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.provider
 
-class GithubClientApplication : Application() {
-
-    lateinit var appComponent: AppComponent
-
-    override fun onCreate() {
-        super.onCreate()
-        if (BuildConfig.DEBUG) {
-            Timber.plant(DebugTree())
-        }
-        initAppComponent()
-    }
-
-    private fun initAppComponent() {
-        appComponent = DaggerAppComponent.builder()
-            .application(this)
-            .build()
+class GithubClientApplication : Application(), KodeinAware {
+    override val kodein = Kodein {
+        import(appKodeinModule)
+        bind<GithubClientApplication>() with provider { this@GithubClientApplication }
     }
 
     companion object {
