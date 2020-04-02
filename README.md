@@ -2,11 +2,10 @@
 
 ## Application
 
-GithubClient application which shows how to use DI frameworks like Dagger 2 and Kodein.
+GithubClient application which shows how to use DI frameworks like Dagger 2 and Kodein. **Implementations are located in each own branch separatly.** Check it our and contribute if you wish or file an issue if you find one.
 
 This application is a simple github client that helps you to load all repositories for a particular account. The main
-goal of this project is to show how to use Dagger 2 and Kodein as Dependency Injection frameworks. There are 2 different
-branches which show the main features of each framework separately.
+goal of this project is to show how to use Dagger 2 and Kodein as Dependency Injection frameworks. 
 
 This example was used to create
 [presentation](https://docs.google.com/presentation/d/14XCXdgPnY9GvF-FX0PYXEAv7pj16aTnoqydHGJUznnk/edit) about DI in
